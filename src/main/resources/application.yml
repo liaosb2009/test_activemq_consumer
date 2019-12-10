@@ -1,0 +1,40 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: test_activemq_consumer
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test_docker?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initial-size: 5
+    min-idle: 5
+    max-idle: 100
+    max-wait: 10000
+    validation-query: SELECT 1
+    test-on-borrow: true
+    test-while-idle: true
+    time-between-eviction-runs-millis: 60000
+#  activemq:
+ #   broker-url: tcp://192.168.137.128:61616
+  #  user: admin
+  #  password: admin
+  #jms: #队列false,true为订阅
+  #  pub-sub-domain: false
+
+#myqueue: myTopicqueue #这个为队列名称
+
+mybatis:
+  mapperLocations: classpath*:mybatis/**/*Mapper.xml
+logging:
+  file: boot.log
+  path: /
+query:
+  activeMQUrl: tcp://192.168.137.128:61616
+  port: 61616
+  userName: admin
+  password: admin
